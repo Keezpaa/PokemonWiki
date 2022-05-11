@@ -1,0 +1,52 @@
+﻿<UserControl
+    x:Class="PokemonWiki.Views.PokemonDetailControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PokemonWiki.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:helpers="using:PokemonWiki.Helpers"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <UserControl.Resources>
+        <helpers:StringLengthInvisibilityConverter x:Key="StringLengthInvisibilityConverter" />
+        <helpers:IListStringJoinConverter x:Key="IListStringJoinConverter" />
+    </UserControl.Resources>
+    <ScrollViewer
+        Name="ForegroundElement"
+        HorizontalAlignment="Stretch"
+        VerticalScrollMode="Enabled"
+        Padding="{StaticResource DetailPageMargin}"
+        Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+        IsTabStop="True">
+        <StackPanel>
+            <TextBlock VerticalAlignment="Center" Text="{x:Bind ListDetailsMenuItem.Name, Mode=OneWay}" Style="{ThemeResource TitleTextBlockStyle}" />
+            <StackPanel Name="block" Orientation="Horizontal" Padding="0,15,0,0">
+                <Image Source="{x:Bind ListDetailsMenuItem.PokemonImageFullPath, Mode=OneWay}" />
+                <StackPanel Padding="15,0,0,0">
+                    <TextBlock Text="Region" Style="{StaticResource DetailSubTitleStyle}" />
+                    <TextBlock Text="{x:Bind ListDetailsMenuItem.Region, Mode=OneWay}" Style="{StaticResource DetailBodyBaseMediumStyle}" />
+                        
+                    <TextBlock Visibility="{x:Bind ListDetailsMenuItem.PokemonType, Converter={StaticResource StringLengthInvisibilityConverter}, Mode=OneWay}" Margin="{StaticResource SmallTopMargin}" Text="PokemonType" Style="{StaticResource DetailSubTitleStyle}" />
+                    <TextBlock Text="{x:Bind ListDetailsMenuItem.PokemonType, Mode=OneWay}" Style="{StaticResource DetailBodyBaseMediumStyle}" />
+                    
+                </StackPanel>
+            </StackPanel>
+
+            <Grid >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel>
+                    <TextBlock Margin="{StaticResource MediumTopMargin}" Text="Description" Style="{StaticResource DetailSubTitleStyle}" />
+                    <TextBlock Style="{StaticResource DetailBodyStyle}" Text="{x:Bind ListDetailsMenuItem.Description, Mode=OneWay}" />
+                </StackPanel>
+                <StackPanel Margin="{StaticResource MediumLeftRightMargin}" Grid.Column="1">
+                    <TextBlock Margin="{StaticResource MediumTopMargin}" Text="Attacks" Style="{StaticResource DetailSubTitleStyle}" />
+                    <TextBlock Text="{x:Bind ListDetailsMenuItem.Attacks, Converter={StaticResource IListStringJoinConverter}, Mode=OneWay}"/>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

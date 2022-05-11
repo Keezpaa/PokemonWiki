@@ -1,0 +1,29 @@
+﻿<Page
+    x:Class="PokemonWiki.Views.PokemonPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PokemonWiki.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <StackPanel>
+        <TextBox VerticalAlignment="Center" PlaceholderText="Enter pokemon name" Text="{x:Bind ViewModel.Name, Mode=TwoWay}" Style="{ThemeResource TitleTextBlockStyle}" />
+        <StackPanel Orientation="Horizontal" Padding="0,15,0,0">
+            <Image Source="{x:Bind ViewModel.PokemonImage, Mode=OneWay}" />
+            <StackPanel Padding="15,0,0,0">
+                <TextBlock Text="Evolution" Style="{StaticResource DetailSubTitleStyle}" />
+                <TextBox Width="300" PlaceholderText="Enter pokemon evolution (if it has one)" Text="{x:Bind ViewModel.Evolution, Mode=TwoWay}" Style="{StaticResource DetailBodyBaseMediumStyle}" />
+
+                <TextBlock Margin="{StaticResource SmallTopMargin}" Text="PokemonType" Style="{StaticResource DetailSubTitleStyle}" />
+                <TextBox PlaceholderText="Enter pokemontype (grass, poison, normal, bug etc.)" Text="{x:Bind ViewModel.PokemonType, Mode=TwoWay}" Style="{StaticResource DetailBodyBaseMediumStyle}" />
+            </StackPanel>
+        </StackPanel>
+        <StackPanel>
+            <TextBlock Margin="{StaticResource MediumTopMargin}" Text="Description" Style="{StaticResource DetailSubTitleStyle}" />
+            <TextBox PlaceholderText="Enter pokemon description" Style="{StaticResource DetailBodyStyle}" Text="{x:Bind ViewModel.Description, Mode=TwoWay}" />
+        </StackPanel>
+        <TextBlock Margin="{StaticResource MediumTopMargin}" Foreground="Red" VerticalAlignment="Center" Text="{x:Bind ViewModel.Errors, Mode=OneWay}" Style="{ThemeResource DetailBodyStyle}" />
+    </StackPanel>
+</Page>
