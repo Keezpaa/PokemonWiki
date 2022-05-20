@@ -15,7 +15,7 @@ namespace PokemonWiki.ViewModels
     public class WebViewModel : ObservableRecipient, INavigationAware
     {
         // TODO WTS: Set the URI of the page to show by default
-        private const string DefaultUrl = "https://bulbapedia.bulbagarden.net/wiki/";
+        private const string DefaultUrl = "https://bulbapedia.bulbagarden.net/wiki/Main_Page";
         private Uri _source;
         private bool _isLoading = true;
         private bool _hasFailures;

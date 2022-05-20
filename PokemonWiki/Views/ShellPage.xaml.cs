@@ -1,17 +1,19 @@
 ﻿using CommunityToolkit.Mvvm.DependencyInjection;
-
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 
 using PokemonWiki.Contracts.Services;
 using PokemonWiki.ViewModels;
-
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using Windows.System;
 
 namespace PokemonWiki.Views
 {
     // TODO WTS: Change the icons and titles for all NavigationViewItems in ShellPage.xaml.
-    public sealed partial class ShellPage : Page
+    public sealed partial class ShellPage : Page 
     {
         private readonly KeyboardAccelerator _altLeftKeyboardAccelerator = BuildKeyboardAccelerator(VirtualKey.Left, VirtualKeyModifiers.Menu);
         private readonly KeyboardAccelerator _backKeyboardAccelerator = BuildKeyboardAccelerator(VirtualKey.GoBack);
@@ -53,5 +55,6 @@ namespace PokemonWiki.Views
             var result = navigationService.GoBack();
             args.Handled = result;
         }
+        
     }
 }

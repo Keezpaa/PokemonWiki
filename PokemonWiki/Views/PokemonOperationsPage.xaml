@@ -18,13 +18,13 @@
                     <ColumnDefinition Width="Auto" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <PersonPicture Height="30" ProfilePicture="{x:Bind PokemonImageFullPath}" />
+                <PersonPicture Height="70" ProfilePicture="{x:Bind PokemonImageFullPath}" />
                 <StackPanel
                     Grid.Column="1"
                     Margin="{StaticResource SmallLeftMargin}"
                     VerticalAlignment="Center">
                     <TextBlock Text="{x:Bind Name}" Style="{StaticResource ListTitleStyle}" />
-                    <TextBlock Text="{x:Bind Name}" Style="{StaticResource ListSubTitleStyle}" />
+                    <TextBlock Text="{x:Bind PokemonType}" Style="{StaticResource ListSubTitleStyle}" />
                 </StackPanel>
             </Grid>
         </DataTemplate>
@@ -74,11 +74,7 @@
                 <CommandBar>
                     <AppBarButton Icon="Add" Label="Add" Command="{x:Bind ViewModel.AddCommand}"/>
                     <AppBarButton Icon="Delete" Label="Delete" Command="{x:Bind ViewModel.DeleteCommand}" CommandParameter="{x:Bind ViewModel.SelectedPokemon, Mode=OneWay}" />
-                    <AppBarButton Icon="Edit" Label="Update" Command="{x:Bind ViewModel.UpdateCommand}" CommandParameter="{x:Bind ViewModel.SelectedPokemon, Mode=TwoWay}"/>
-
-                    <!--<CommandBar.SecondaryCommands>
-                        <AppBarButton Icon="Setting" Label="Settings" Command="{x:Bind ViewModel.SettingsCommand}" />
-                    </CommandBar.SecondaryCommands>-->
+                    <AppBarButton Icon="Edit" Label="Update" Command="{x:Bind ViewModel.UpdateCommand}" CommandParameter="{x:Bind ViewModel.SelectedPokemon, Mode=OneWay}"/>
                 </CommandBar>
             </controls:ListDetailsView.ListCommandBar>
         </controls:ListDetailsView>

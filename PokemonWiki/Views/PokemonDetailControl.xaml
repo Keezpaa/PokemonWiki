@@ -22,12 +22,12 @@
         <StackPanel>
             <TextBlock VerticalAlignment="Center" Text="{x:Bind ListDetailsMenuItem.Name, Mode=OneWay}" Style="{ThemeResource TitleTextBlockStyle}" />
             <StackPanel Name="block" Orientation="Horizontal" Padding="0,15,0,0">
-                <Image Source="{x:Bind ListDetailsMenuItem.PokemonImageFullPath, Mode=OneWay}" />
+                <Image Source="{x:Bind ListDetailsMenuItem.PokemonImageFullPath , Mode=OneWay}" />
                 <StackPanel Padding="15,0,0,0">
                     <TextBlock Text="Region" Style="{StaticResource DetailSubTitleStyle}" />
                     <TextBlock Text="{x:Bind ListDetailsMenuItem.Region, Mode=OneWay}" Style="{StaticResource DetailBodyBaseMediumStyle}" />
-                        
-                    <TextBlock Visibility="{x:Bind ListDetailsMenuItem.PokemonType, Converter={StaticResource StringLengthInvisibilityConverter}, Mode=OneWay}" Margin="{StaticResource SmallTopMargin}" Text="PokemonType" Style="{StaticResource DetailSubTitleStyle}" />
+
+                    <TextBlock Text="PokemonType" Style="{StaticResource DetailSubTitleStyle}" />
                     <TextBlock Text="{x:Bind ListDetailsMenuItem.PokemonType, Mode=OneWay}" Style="{StaticResource DetailBodyBaseMediumStyle}" />
                     
                 </StackPanel>

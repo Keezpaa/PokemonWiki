@@ -181,22 +181,22 @@
   <data name="Shell_Main.Content" xml:space="preserve">
     <value>Main</value>
   </data>
+  <data name="Shell_PokemonGallery.Content" xml:space="preserve">
+    <value>Pokemon Gallery</value>
+  </data>
   <data name="Shell_Pokemons.Content" xml:space="preserve">
     <value>Pokemon CRUD m/eget API</value>
-  </data>
-  <data name="Shell_PokemonTrainer.Content" xml:space="preserve">
-    <value>Trainer CRUD</value>
   </data>
   <data name="Shell_Web.Content" xml:space="preserve">
     <value>Pokemon Website</value>
   </data>
-  <data name="Web_FailedMessage.Text" xml:space="preserve">
+  <data name="WebView_FailedMessage.Text" xml:space="preserve">
     <value>Page failed to load. Check connection and reload.</value>
   </data>
-  <data name="Web_Loading.Text" xml:space="preserve">
+  <data name="WebView_Loading.Text" xml:space="preserve">
     <value>Loading...</value>
   </data>
-  <data name="Web_Reload.Content" xml:space="preserve">
+  <data name="WebView_Reload.Content" xml:space="preserve">
     <value>Reload</value>
   </data>
 </root>

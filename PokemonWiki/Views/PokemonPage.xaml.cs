@@ -30,5 +30,6 @@ namespace PokemonWiki.Views
             ViewModel = viewModel;
             this.InitializeComponent();
         }
+
     }
 }

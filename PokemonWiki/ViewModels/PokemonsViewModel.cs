@@ -1,11 +1,11 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Controls.Primitives;
 using PokemonWiki.Contracts.Services;
 using PokemonWiki.Contracts.ViewModels;
 using PokemonWiki.Core.Constants.Contracts;
 using PokemonWiki.Core.DTOs;
-using PokemonWiki.DataAccess.Models;
 using PokemonWiki.Views;
 using System;
 using System.Collections.Generic;
@@ -76,41 +76,33 @@ namespace PokemonWiki.ViewModels
         {
             get
             {
-                // if private ICommand is null
+                
                 if (_updateCommand == null)
                 {
-                    // 
                     _updateCommand = new RelayCommand<PokemonDetailViewModel>(async param =>
                     {
-                        PokemonDetailViewModel newPokemon = new() { PokemonImage = "Unknown.jpg" };
-                        PokemonPage page = new(newPokemon);
+                        PokemonDetailViewModel updatePokemon = param;  /*new() { PokemonImage = "pokemonname.png" };*/
+                        PokemonPage page = new(updatePokemon);
 
                         ContentDialog updateDialog = new()
                         {
                             Title = "Update pokemon",
                             Content = page,
                             PrimaryButtonText = "Update",
-                            IsPrimaryButtonEnabled = false,
+                            IsPrimaryButtonEnabled = true,
                             CloseButtonText = "Cancel",
-
-                            DefaultButton = ContentDialogButton.Close,
+                            DefaultButton = ContentDialogButton.Primary,
                             XamlRoot = _navigationService.Frame.XamlRoot
                         };
-                        // enables the primaryButton (UpdateButton) if the newCharacter doesn't have errors or missing required info
-                        newPokemon.PropertyChanged += (sender, e) => updateDialog.IsPrimaryButtonEnabled = !newPokemon.HasErrors;
+                        
+                        updatePokemon.PropertyChanged += (sender, e) => updateDialog.IsPrimaryButtonEnabled = !updatePokemon.HasErrors;
 
-                        // contentDialogResult is an enum. result will be primary (1) if user clicks the primaryButton (UpdateButton)
+                        
                         ContentDialogResult result = await updateDialog.ShowAsync();
-
-                        // if the primary button in contentdialog is tapped
+  
                         if (result == ContentDialogResult.Primary)
                         {
-                            // returns true if    , returns false if not
-                            if (await _pokemonService.DeletePokemonAsync((PokemonDto)param))
-                            {
-                                _ = Pokemon.Remove(param);
-                            }
-                            Pokemon.Add(param);
+                            if (await _pokemonService.UpdatePokemonAsync((PokemonDto)updatePokemon)) { }
                         }
                     }, param => param != null);
                 }
@@ -128,7 +120,7 @@ namespace PokemonWiki.ViewModels
                 {
                     _addCommand = new RelayCommand(async () =>
                     {
-                        PokemonDetailViewModel newPokemon = new() { PokemonImage = "Unknown.jpg" };
+                        PokemonDetailViewModel newPokemon = new() { PokemonImage = "pokemonname.png" };
                         PokemonPage page = new(newPokemon);
 
                         ContentDialog dialog = new()

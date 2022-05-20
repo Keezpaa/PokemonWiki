@@ -9,7 +9,6 @@
     xmlns:i="using:Microsoft.Xaml.Interactivity"
     Loaded="OnLoaded"
     Style="{StaticResource PageStyle}">
-
     <NavigationView
         x:Name="navigationView"
         IsBackButtonVisible="Visible"
@@ -20,20 +19,30 @@
         Header="{x:Bind ((ContentControl)ViewModel.Selected).Content, Mode=OneWay}"
         Background="{ThemeResource SystemControlBackgroundAltHighBrush}">
         <NavigationView.MenuItems>
-            <!--
-            TODO WTS: Change the symbols for each item as appropriate for your app
-            More on Segoe UI Symbol icons: https://docs.microsoft.com/windows/uwp/style/segoe-ui-symbol-font
-            Or to use an IconElement instead of a Symbol see https://github.com/Microsoft/WindowsTemplateStudio/blob/release/docs/UWP/projectTypes/navigationpane.md
-            Edit String/en-US/Resources.resw: Add a menu item title for each page
-            -->
-            <NavigationViewItem x:Uid="Shell_Main" Icon="Document" helpers:NavHelper.NavigateTo="PokemonWiki.ViewModels.MainViewModel" />
-            <NavigationViewItem x:Uid="Shell_Pokemons" Icon="Admin" helpers:NavHelper.NavigateTo="PokemonWiki.ViewModels.PokemonsViewModel" />
+            <NavigationViewItem x:Uid="Shell_Main" helpers:NavHelper.NavigateTo="PokemonWiki.ViewModels.MainViewModel">
+                <NavigationViewItem.Icon>
+                    <BitmapIcon UriSource="/Assets/mainLogo.png"
+                                ShowAsMonochrome="False"/>
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+            <NavigationViewItem x:Uid="Shell_Pokemons" helpers:NavHelper.NavigateTo="PokemonWiki.ViewModels.PokemonsViewModel">
+                <NavigationViewItem.Icon>
+                    <BitmapIcon UriSource="/Assets/pikachuLogo.png"
+                                    ShowAsMonochrome="False" />
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
             <NavigationViewItem x:Uid="Shell_Web" Icon="Globe" helpers:NavHelper.NavigateTo="PokemonWiki.ViewModels.WebViewModel" />
-            <NavigationViewItem x:Uid="Shell_PokemonTrainer" Icon="Globe" helpers:NavHelper.NavigateTo="PokemonWiki.ViewModels.PokemonTrainerViewModel" />
+            <NavigationViewItem x:Uid="Shell_PokemonGallery" helpers:NavHelper.NavigateTo="PokemonWiki.ViewModels.PokemonGalleryViewModel">
+                <NavigationViewItem.Icon>
+                    <BitmapIcon UriSource="/Assets/pokeball.png" ShowAsMonochrome="False"/>
+                </NavigationViewItem.Icon>
+            </NavigationViewItem>
+            
         </NavigationView.MenuItems>
         <NavigationView.HeaderTemplate>
             <DataTemplate>
                 <Grid>
+                    <Image Source="PokemonWiki/Assets/Square44x44Logo.scale-100.png"/>
                     <TextBlock
                         Text="{Binding}"
                         Style="{ThemeResource TitleTextBlockStyle}"
@@ -57,6 +66,7 @@
             </behaviors:NavigationViewHeaderBehavior>
         </i:Interaction.Behaviors>
         <Grid>
+
             <Frame x:Name="shellFrame" />
         </Grid>
     </NavigationView>

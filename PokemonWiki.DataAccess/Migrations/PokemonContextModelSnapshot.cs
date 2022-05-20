@@ -550,7 +550,7 @@ namespace PokemonWiki.DataAccess.Migrations
                             Description = "Cyndaquil (Japanese: ヒノアラシ Hinoarashi) is a Fire-type Pokémon introduced in Generation II. It evolves into Quilava starting at level 14 (Generations II to VII, Brilliant Diamond and Shining Pearl) or level 17 (Legends: Arceus), which evolves into Typhlosion starting at level 36. Along with Chikorita and Totodile, Cyndaquil is one of the three starter Pokémon of Johto available at the beginning of Pokémon Gold, Silver, Crystal, HeartGold, and SoulSilver. It also acts as one of the three starters for the Hisui region in Legends: Arceus alongside Rowlet and Oshawott.",
                             Evolution = "Quilava -> Typhlosion",
                             Name = "Cyndaquil",
-                            PokemonImage = "quilava.png",
+                            PokemonImage = "cyndaquil.png",
                             PokemonType = "Fire",
                             Region = 2
                         },

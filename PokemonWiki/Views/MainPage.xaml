@@ -6,14 +6,12 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Style="{StaticResource PageStyle}">
-
+    
     <Grid x:Name="ContentArea" Margin="{StaticResource MediumLeftRightMargin}">
         <Grid
             Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
-            <!--
-                The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content.
-                Place your content here.
-            -->
+            <TextBlock Text="Velkommen til min pokemon app! Her har jeg en del med CRUD operasjoner og et gallery med noen av mine favoritt pokemon, i menyen til venstre. Kos deg!"></TextBlock>
+            <Image Source="/Assets/landingpage.png"></Image>
         </Grid>
     </Grid>
 </Page>

@@ -6,6 +6,7 @@ using Microsoft.UI.Xaml;
 using PokemonWiki.Activation;
 using PokemonWiki.Contracts.Services;
 using PokemonWiki.Core.Constants.Contracts;
+using PokemonWiki.Core.Contracts.Services;
 using PokemonWiki.Core.Services;
 using PokemonWiki.Helpers;
 using PokemonWiki.Services;
@@ -60,6 +61,7 @@ namespace PokemonWiki
 
             // Core Services
             services.AddSingleton<IPokemonService, PokemonService>();
+            services.AddSingleton<IPokemonDataService, PokemonDataService>();
 
             // Views and ViewModels
             services.AddTransient<ShellPage>();
@@ -67,14 +69,18 @@ namespace PokemonWiki
             services.AddTransient<MainViewModel>();
             services.AddTransient<MainPage>();
 
+            services.AddTransient<PokemonDetailControl>();
             services.AddTransient<PokemonDetailViewModel>();
             services.AddTransient<PokemonsViewModel>();
             services.AddTransient<PokemonPage>();
             services.AddTransient<PokemonOperationsPage>();
             services.AddTransient<WebViewModel>();
             services.AddTransient<WebPage>();
-            services.AddTransient<PokemonTrainerPage>();
-            services.AddTransient<PokemonTrainerViewModel>();
+
+            services.AddTransient<PokemonGalleryViewModel>();
+            services.AddTransient<PokemonGalleryPage>();
+            services.AddTransient<PokemonGalleryDetailViewModel>();
+            services.AddTransient<PokemonGalleryDetailPage>();
 
             services.AddTransient<SettingsViewModel>();
             services.AddTransient<SettingsPage>();

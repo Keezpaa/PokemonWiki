@@ -14,7 +14,7 @@ namespace PokemonWiki.Services
 {
     public class PageService : IPageService
     {
-        private readonly Dictionary<string, Type> _pages = new();
+        private readonly Dictionary<string, Type> _pages = new Dictionary<string, Type>();
 
         public PageService()
         {
@@ -23,7 +23,11 @@ namespace PokemonWiki.Services
             Configure<PokemonsViewModel, PokemonOperationsPage>();
             Configure<SettingsViewModel, SettingsPage>();
             Configure<WebViewModel, WebPage>();
-            Configure<PokemonTrainerViewModel, PokemonTrainerPage>();
+            Configure<PokemonGalleryViewModel, PokemonGalleryPage>();
+            Configure<PokemonGalleryDetailViewModel, PokemonGalleryDetailPage>();
+
+
+            
         }
 
         public Type GetPageType(string key)

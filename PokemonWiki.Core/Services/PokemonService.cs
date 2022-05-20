@@ -47,9 +47,7 @@ namespace PokemonWiki.Core.Services
 
         public async Task<bool> UpdatePokemonAsync(PokemonDto pokemon)
         {
-            HttpResponseMessage response = await _httpClient.PutAsJsonAsync($"pokemon/{pokemon.PokemonId}", pokemon);
-            //response.EnsureSuccessStatusCode();
-
+            HttpResponseMessage response = await _httpClient.DeleteAsync($"pokemon/{pokemon.PokemonId}");
             return response.IsSuccessStatusCode;
         }
     }

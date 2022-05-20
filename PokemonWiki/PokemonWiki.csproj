@@ -1,5 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
+	  <WindowsSdkPackageVersion>10.0.19041.18</WindowsSdkPackageVersion>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows10.0.19041.0</TargetFramework>
     <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
@@ -9,19 +10,20 @@
     <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
     <UseWinUI>true</UseWinUI>
   </PropertyGroup>
-
+	
   <!-- Workaround for https://github.com/dotnet/sdk/issues/17890 -->
   <PropertyGroup>
     <NoWarn>CA1416, $(NoWarn)</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Views\PokemonDetailControl.xaml" />
+    <None Remove="Views\PokemonGalleryDetailPage.xaml" />
+    <None Remove="Views\PokemonGalleryPage.xaml" />
     <None Remove="Views\PokemonOperationsPage.xaml" />
     <None Remove="Views\PokemonPage.xaml" />
-    <None Remove="Views\PokemonTrainerPage.xaml" />
     <None Remove="Views\WebPage.xaml" />
   </ItemGroup>
-
+	
   <ItemGroup>
     <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
@@ -43,11 +45,6 @@
     <ProjectReference Include="..\PokemonWiki.DataAccess\PokemonWiki.DataAccess.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <Page Update="Views\PokemonTrainerPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
     <Page Update="Views\WebPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -64,6 +61,19 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\PokemonPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\PokemonGalleryDetailPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\PokemonGalleryPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
